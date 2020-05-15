@@ -7,3 +7,6 @@ Masked Dude es un juego de disparos temático de peleas. El jugador controla a s
 ## Público objetivo del videojuego
 MaskedDude está diseñado para jugadores de todas las edades, amantes de la acción y aventuras.
 El usuario solo necesita un ordenador con teclado para jugar.
+
+## Diagrama de clases 
+![Diagrama de clases](diagramaDeClases.png)
