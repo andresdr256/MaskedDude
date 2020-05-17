@@ -17,13 +17,11 @@ public class StartScreen extends World
     
     public void act(){        
         soundtrack.play();
-        try {
-            Thread.sleep(3700);
-        } catch (InterruptedException ex) {
-            //Nada
-        }
+        Greenfoot.delay(190);
         Greenfoot.setWorld(new Menu());
         soundtrack.stop();
     }
+    
+    
     
 }

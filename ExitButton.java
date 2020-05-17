@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class ExitButton extends Buttons
+public class ExitButton extends Button
 {
     public void act() 
     {

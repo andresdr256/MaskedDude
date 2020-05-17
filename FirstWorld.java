@@ -1,12 +1,10 @@
 import greenfoot.*;
 
-public class FirstWorld extends World
+public class FirstWorld extends GameWorld
 {
 
     public FirstWorld()
     {    
-        super(1100, 500, 1);
-        
         prepare();
     }
     

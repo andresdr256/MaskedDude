@@ -1,9 +1,9 @@
 import greenfoot.*;
 
-public class FinalWorld extends World
+public class FinalWorld extends GameWorld
 {
     public FinalWorld()
     {    
-        super(600, 400, 1); 
+
     }
 }

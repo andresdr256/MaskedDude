@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class StartButton extends Buttons
+public class StartButton extends Button
 {
     private GreenfootSound soundtrack = new GreenfootSound("MenuSound2.mp3");    
 
