@@ -1,20 +1,25 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 public class Player extends Actor
 {
     private final int GRAVITY = 1;
-    private int velocity;
+    private int speed;
     
-    public Player(){
-        
-        velocity = 5;
+    public Player(){        
+        speed = 5;
     }
     
+    public Player(int width, int height){
+        GreenfootImage image = getImage();
+        image.scale(width, height);
+        setImage(image);
+    }
+
+    
     public void act() {
-        
         move();
     }    
-    
+            
     public void move() {
         
         // Position variables
@@ -22,37 +27,39 @@ public class Player extends Actor
         int x = getX();
         
         // Horizontal movement
-        if(Greenfoot.isKeyDown("left"))    x -= 5;
-        if(Greenfoot.isKeyDown("right"))   x += 5;
+        if(Greenfoot.isKeyDown("LEFT")  &&  x>20)    x -= 10;
+        if(Greenfoot.isKeyDown("RIGHT")  &&  x<900) x += 5;
         setLocation(x, y);
         
         // Fall motion
         fall();
         
         // Jump motion
-        if(Greenfoot.isKeyDown("space") && isOnSolidGround())    jump();
-    
+        if(Greenfoot.isKeyDown("UP") && isOnSolidGround()){
+            jump();
+        }    
     }        
     
-    // Falling movement 
+    // Movimiento de caida 
     public void fall() {
-        setLocation(getX(), getY() + velocity);
-        if(isOnSolidGround()){
-            velocity = 0;
+        setLocation(getX(), getY() + speed);
         
-            while (isOnSolidGround()) {
-                setLocation(getX(), getY() - 1);
-            }    
-            setLocation(getX(), getY() + 1);
+        if(isOnSolidGround()){
+            speed = 0;        
         }
-        else if (velocity < 0 && didBumpHead()) velocity = 0;
-        else velocity += GRAVITY;
+        
+        else if (speed < 0 && didBumpHead()) {
+                speed = 0;
+            }
+            else speed += GRAVITY;
     }
-    
+
+    // Saltar
     public void jump(){
-        velocity = -20;
+        speed = -20;
     }        
-    
+
+    // Se encuentra en el suelo
     public boolean isOnSolidGround(){
         boolean isOnGround = false;
         
@@ -60,13 +67,16 @@ public class Player extends Actor
         
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
+        
         if(getOneObjectAtOffset(imageWidth / -2, imageHeight / 2, Platform.class) != null  || 
-           getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null) 
-            isOnGround = true;
+           getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null) {
+               isOnGround = true;
+        }
         
         return isOnGround;
     }
-    
+
+    // Se ha golpeado la cabeza
     public boolean didBumpHead(){
         boolean bumpedHead = false;
         

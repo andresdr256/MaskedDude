@@ -1,25 +1,15 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Platform here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Platform extends Actor
 {
-    public Platform(){
-        this(100, 25);
-    }
-    
-    public Platform(int width, int height){
-        GreenfootImage image = getImage();
-        image.scale(width, height);
-        setImage(image);
-    }
-    
     public void act() 
     {
-        // Add your action code here.
-    }    
+        scroll();
+    }
+    
+    public void scroll(){
+        if(Greenfoot.isKeyDown("right")){
+            setLocation(getX()-3, getY());
+        }
+    }        
 }

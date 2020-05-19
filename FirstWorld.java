@@ -2,20 +2,22 @@ import greenfoot.*;
 
 public class FirstWorld extends GameWorld
 {
-
+    
     public FirstWorld()
     {    
         prepare();
     }
     
     private void prepare()
-    {
-        Player player = new Player();
+    {   
+        BuildingsBackground buildingsBackground = new BuildingsBackground();
+        addObject(buildingsBackground,550, 251);
+
+        PlatformBuilding platformBuilding= new PlatformBuilding();
+        addObject(platformBuilding,550, 550);
+
+        Player player = new Player(80, 110);
         addObject(player, 216, 176);
-        Platform platform = new Platform(200, 25);
-        addObject(platform,400,311);
-        
-        
     }
     
     
