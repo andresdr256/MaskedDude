@@ -38,10 +38,17 @@ dependency8.type=UsesDependency
 dependency9.from=StartButton
 dependency9.to=FirstWorld
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=251
 editor.fx.0.y=33
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+>>>>>>> aee4d49c66187d7e8b340fd662292aac0071857c
 height=744
 package.numDependencies=10
 package.numTargets=15
