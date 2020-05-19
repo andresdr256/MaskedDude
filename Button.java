@@ -14,7 +14,7 @@ public class Button extends Actor
         
         
         if(mouseOver){
-            adjTrans(MAX_TRANS/3);
+            adjustTransparency(MAX_TRANS/3);
             
             if(mouseOverSound == 0){
                 selectSound.play();
@@ -22,18 +22,14 @@ public class Button extends Actor
             }    
         }
         else{
-            adjTrans(MAX_TRANS);
+            adjustTransparency(MAX_TRANS);
             mouseOverSound = 0;
         }
     }
     
-    public void adjTrans(int adjust){
+    public void adjustTransparency(int adjust){
         GreenfootImage tempImage = getImage();
         tempImage.setTransparency(adjust);
         setImage(tempImage);
-    }
-    
-    public void act() 
-    {
     }    
 }

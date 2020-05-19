@@ -9,7 +9,7 @@ public class Platform extends Actor
     
     public void scroll(){
         if(Greenfoot.isKeyDown("right")){
-            setLocation(getX()-3, getY());
+            setLocation(getX()-5, getY());
         }
     }        
 }

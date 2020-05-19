@@ -4,6 +4,6 @@ public class Options extends World
 {
    public Options()
     {    
-        super(600, 400, 1); 
+        super(1100, 500, 1); 
     }
 }

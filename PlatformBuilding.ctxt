@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=PlatformBuilding
-comment1.params=
-comment1.target=void\ act()
+comment1.params=platformBuilding
+comment1.target=void\ scrollBuilding(PlatformBuilding)
 numComments=2

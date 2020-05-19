@@ -1,13 +1,22 @@
 import greenfoot.*;  
 
 public class BuildingsBackground extends Actor
-{
-    private int counter = 0;
-    
+{    
     public void act() 
     {
-        if(Greenfoot.isKeyDown("right")){
+        scroll();
+    }    
+    
+    public void scroll()
+    {
+        if(Greenfoot.isKeyDown("right"))
+        {        
+            if(getX() == -550)
+            {
+                setLocation(1650, 250);
+            }
+        
             setLocation(getX()-1, getY());
         }
-    }    
+    }
 }

@@ -16,10 +16,10 @@ public class Player extends Actor
     }
 
     
-    public void act() {
+    public void act() {        
         move();
-    }    
-            
+    }
+    
     public void move() {
         
         // Position variables
@@ -27,8 +27,14 @@ public class Player extends Actor
         int x = getX();
         
         // Horizontal movement
-        if(Greenfoot.isKeyDown("LEFT")  &&  x>20)    x -= 10;
-        if(Greenfoot.isKeyDown("RIGHT")  &&  x<900) x += 5;
+        if(Greenfoot.isKeyDown("LEFT")  &&  x>100){
+            x -= 10;
+        }
+    
+        if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
+            x += 1;
+        }
+      
         setLocation(x, y);
         
         // Fall motion
@@ -63,8 +69,6 @@ public class Player extends Actor
     public boolean isOnSolidGround(){
         boolean isOnGround = false;
         
-        if(getY() > getWorld().getHeight() - 80)    isOnGround = true;
-        
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
@@ -89,4 +93,17 @@ public class Player extends Actor
         
         return bumpedHead;
     }
+    
+    public boolean isOver()
+    {
+        boolean isOver = false;
+        
+        if(getY() > 500)
+        {
+            isOver = true;
+        }
+        
+        return isOver; 
+    }
+
 }
