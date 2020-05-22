@@ -16,6 +16,5 @@ public class Menu extends World
     }
     
     public void act(){
-
     }
 }

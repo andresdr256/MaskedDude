@@ -4,17 +4,13 @@ public class Player extends Actor
 {
     private final int GRAVITY = 1;
     private int speed;
+    private int leftSpriteCounter = 0; 
+    private int rightSpriteCounter = 0;
+    private int i = 0;
     
     public Player(){        
         speed = 5;
     }
-    
-    public Player(int width, int height){
-        GreenfootImage image = getImage();
-        image.scale(width, height);
-        setImage(image);
-    }
-
     
     public void act() {        
         move();
@@ -28,18 +24,45 @@ public class Player extends Actor
         
         // Horizontal movement
         if(Greenfoot.isKeyDown("LEFT")  &&  x>100){
+            if(leftSpriteCounter < 8 && i == 5){
+                setImage("sprites/PlayerLeft" + leftSpriteCounter + ".png");
+                leftSpriteCounter++;
+                i=0;
+            }
+            
+            else{ 
+                if(leftSpriteCounter >= 8) 
+                    leftSpriteCounter = 0;
+                
+                i++;
+            }
+
             x -= 10;
         }
     
         if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
-            x += 1;
+            
+            if(rightSpriteCounter < 8 && i == 5){
+                setImage("sprites/PlayerRight" + rightSpriteCounter + ".png");
+                rightSpriteCounter++;
+                i=0;
+            }
+            
+            else{ 
+                if(rightSpriteCounter >= 8) 
+                    rightSpriteCounter = 0;
+                
+                i++;
+            }
+            
+            if(rightSpriteCounter != 0 && rightSpriteCounter != 4) 
+                x += 1;
         }
-      
+        
         setLocation(x, y);
         
         // Fall motion
         fall();
-        
         // Jump motion
         if(Greenfoot.isKeyDown("UP") && isOnSolidGround()){
             jump();
@@ -73,7 +96,7 @@ public class Player extends Actor
         int imageHeight = getImage().getHeight();
         
         if(getOneObjectAtOffset(imageWidth / -2, imageHeight / 2, Platform.class) != null  || 
-           getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null) {
+           getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null){ 
                isOnGround = true;
         }
         

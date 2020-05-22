@@ -13,7 +13,7 @@ public class BuildingsBackground extends Actor
         {        
             if(getX() == -550)
             {
-                setLocation(1650, 250);
+                setLocation(1649, 250);
             }
         
             setLocation(getX()-1, getY());
