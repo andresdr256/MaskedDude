@@ -3,7 +3,7 @@ import java.util.Random;
     
 public class FirstWorld extends GameWorld
 {    
-    private GreenfootSound soundtrack = new GreenfootSound("World1Soundtrack.mp3");
+    private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
 
     PlatformBuilding platformBuilding1= new PlatformBuilding();
     PlatformBuilding platformBuilding2= new PlatformBuilding();
@@ -23,7 +23,7 @@ public class FirstWorld extends GameWorld
     {   
         addObject(buildingsBackground,550, 250);
         addObject(buildingsBackground2,1649, 250);
-        
+
         addObject(platformBuilding1,550, 550);
         addObject(platformBuilding2,1850, 500);
 

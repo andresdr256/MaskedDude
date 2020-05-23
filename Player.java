@@ -13,10 +13,10 @@ public class Player extends Actor
     }
     
     public void act() {        
-        move();
+        processKeys();
     }
     
-    public void move() {
+    public void processKeys() {
         
         // Position variables
         int y = getY();
@@ -66,8 +66,21 @@ public class Player extends Actor
         // Jump motion
         if(Greenfoot.isKeyDown("UP") && isOnSolidGround()){
             jump();
-        }    
-    }        
+        }
+        //Shoot action
+        if (Greenfoot.isKeyDown("space"))
+        {
+            shoot();
+        }
+    }
+
+    // Accion disparar
+    public void shoot()
+    {
+        Bullet bullet = new Bullet(5);
+        bullet.setRotation(getRotation());
+        getWorld().addObject(bullet,getX(),getY());
+    }
     
     // Movimiento de caida 
     public void fall() {
