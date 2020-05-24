@@ -45,8 +45,15 @@ public class Player extends Actor
         if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
             
             if(rightSpriteCounter < 8 && i == 5){
-                if(isOnSolidGround())
-                    setImage("sprites/PlayerRight" + rightSpriteCounter + ".png");
+                if(isOnSolidGround()){
+                    if(Greenfoot.isKeyDown("SPACE")){
+                        setImage("sprites/ShotRight" + rightSpriteCounter + ".png");
+                    }else
+                     {           
+                       setImage("sprites/PlayerRight" + rightSpriteCounter + ".png");
+                     }
+                
+                }
                 rightSpriteCounter++;
                 i=0;
             }
@@ -73,8 +80,11 @@ public class Player extends Actor
         }
         
         //Shoot action
-        if (Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("SPACE"))
         {
+            if ( !Greenfoot.isKeyDown("RIGHT"))
+                setImage("sprites/ShotRight0.png");
+                
             shoot();
         }
     }
@@ -84,7 +94,7 @@ public class Player extends Actor
     {
         Bullet bullet = new Bullet(5);
         bullet.setRotation(getRotation());
-        getWorld().addObject(bullet,getX(),getY());
+        getWorld().addObject(bullet,getX()+55,getY()-25);
     }
     
     // Movimiento de caida 
