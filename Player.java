@@ -9,6 +9,7 @@ public class Player extends Actor
     private int i = 0;
     
     public Player(){        
+        setImage("sprites/PlayerRight0.png");        
         speed = 5;
     }
     
@@ -25,7 +26,8 @@ public class Player extends Actor
         // Horizontal movement
         if(Greenfoot.isKeyDown("LEFT")  &&  x>100){
             if(leftSpriteCounter < 8 && i == 5){
-                setImage("sprites/PlayerLeft" + leftSpriteCounter + ".png");
+                if(isOnSolidGround())
+                    setImage("sprites/PlayerLeft" + leftSpriteCounter + ".png");
                 leftSpriteCounter++;
                 i=0;
             }
@@ -43,7 +45,8 @@ public class Player extends Actor
         if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
             
             if(rightSpriteCounter < 8 && i == 5){
-                setImage("sprites/PlayerRight" + rightSpriteCounter + ".png");
+                if(isOnSolidGround())
+                    setImage("sprites/PlayerRight" + rightSpriteCounter + ".png");
                 rightSpriteCounter++;
                 i=0;
             }
@@ -65,8 +68,10 @@ public class Player extends Actor
         fall();
         // Jump motion
         if(Greenfoot.isKeyDown("UP") && isOnSolidGround()){
-            jump();
+            setImage("sprites/Jump0.png");
+            jump();           
         }
+        
         //Shoot action
         if (Greenfoot.isKeyDown("space"))
         {
@@ -93,7 +98,35 @@ public class Player extends Actor
         else if (speed < 0 && didBumpHead()) {
                 speed = 0;
             }
-            else speed += GRAVITY;
+            else{
+                speed += GRAVITY;            
+            }
+
+        if( ! isOnSolidGround()){
+            if(Greenfoot.isKeyDown("LEFT"))
+            {
+                if(speed == -18)
+                    setImage("sprites/JumpLeft1.png");
+    
+                if(speed == 0)
+                    setImage("sprites/JumpLeft2.png");
+    
+                if(speed == 10)
+                    setImage("sprites/JumpLeft3.png");
+
+            }else{
+                if(speed == -18)
+                    setImage("sprites/JumpRight1.png");
+                
+                if(speed == 0)
+                    setImage("sprites/JumpRight2.png");
+    
+                if(speed == 10)
+                    setImage("sprites/JumpRight3.png");
+             }
+            
+            
+        }
     }
 
     // Saltar
