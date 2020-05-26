@@ -3,6 +3,9 @@ import java.util.Random;
     
 public class FirstWorld extends GameWorld
 {    
+    private boolean enemyHasBeenHit = false;
+    private int enemyRespawnDelayer = 0;
+    
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
 
     PlatformBuilding platformBuilding1= new PlatformBuilding();
@@ -30,7 +33,7 @@ public class FirstWorld extends GameWorld
 
         addObject(player, 100, 50);
 
-        addObject(enemy, 1500, 50);
+        addObject(enemy, player.getX()+1500, 50);
     }
      
     public void act()
@@ -41,7 +44,26 @@ public class FirstWorld extends GameWorld
             platformBuilding2.scrollBuilding(platformBuilding1);
             buildingsBackground.scroll();
             buildingsBackground2.scroll();
-            enemy.scroll();            
+            enemy.scroll();   
+                        
+            if(enemy.getY() > 450)
+                enemy.setLocation(player.getX()+1200, 50);
+                
+            if(enemy.checkImpact())
+            {
+                enemyHasBeenHit = true;
+            }
+            
+            if(enemyHasBeenHit){
+               if(enemyRespawnDelayer == 30)
+               {
+                   enemy.setLocation(player.getX()+1000, 50);
+                   enemyRespawnDelayer = 0;
+                   enemyHasBeenHit = false;
+               }else{
+                   enemyRespawnDelayer++;
+                }
+            }
         }    
         else
         {

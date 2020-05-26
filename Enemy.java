@@ -9,6 +9,7 @@ public class Enemy extends Actor
     
     public Enemy()
     {
+        setImage("sprites/Enemy1.png");
         speed = 5;
     }
     
@@ -17,6 +18,7 @@ public class Enemy extends Actor
         fall();
         shoot();
         checkImpact();
+
         if(isImpacted)
         {
             switch(i){
@@ -35,6 +37,12 @@ public class Enemy extends Actor
                     setImage("sprites/Enemy4.png");
                     setLocation(getX()+35, getY()+10);
                     i++;
+                    break;                
+            
+                case 30:
+                    i=0;
+                    isImpacted = false;
+                    setImage("sprites/Enemy1.png");
                     break;                
                     
                 default:
@@ -89,9 +97,11 @@ public class Enemy extends Actor
     {
     }    
     
-    public void checkImpact()
+    public boolean checkImpact()
     {
         if(isTouching(Bullet.class))
-           isImpacted = true;    
+            isImpacted = true;
+        
+        return isImpacted;
     }
 }
