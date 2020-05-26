@@ -2,6 +2,8 @@
 comment0.target=Player
 comment1.params=
 comment1.target=Player()
+comment10.params=
+comment10.target=boolean\ clueIsTouched()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -18,4 +20,4 @@ comment8.params=
 comment8.target=boolean\ didBumpHead()
 comment9.params=
 comment9.target=boolean\ isOver()
-numComments=10
+numComments=11

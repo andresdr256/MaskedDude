@@ -6,11 +6,16 @@ public class PlatformBuilding extends Platform
     int Y = Greenfoot.getRandomNumber(300)+400;  // Entre 0 y 300, mas 400.    
 
     
-    public void scrollBuilding(PlatformBuilding platformBuilding)
+    public boolean scrollBuilding(PlatformBuilding platformBuilding)
     {
+        boolean buildingChanged = false;
+        
         if(getX() == -550)
         {
             setLocation(platformBuilding.getX() + 1300, Y);
+            buildingChanged = true;
         }
+        
+        return buildingChanged;
     }
 }

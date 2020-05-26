@@ -3,11 +3,12 @@ import java.util.Random;
     
 public class FirstWorld extends GameWorld
 {    
+    private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
+    private boolean missionComplete = false;
     private boolean enemyHasBeenHit = false;
     private int enemyRespawnDelayer = 0;
+    private int plataformsCounter = 0;
     
-    private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
-
     PlatformBuilding platformBuilding1= new PlatformBuilding();
     PlatformBuilding platformBuilding2= new PlatformBuilding();
 
@@ -16,6 +17,8 @@ public class FirstWorld extends GameWorld
 
     Enemy enemy = new Enemy();
     Player player = new Player();
+
+    Clue clue = new Clue();
 
     public FirstWorld()
     {    
@@ -41,7 +44,9 @@ public class FirstWorld extends GameWorld
         if(player.isOver() == false)
         {
             platformBuilding1.scrollBuilding(platformBuilding2);
-            platformBuilding2.scrollBuilding(platformBuilding1);
+            if(platformBuilding2.scrollBuilding(platformBuilding1))
+                plataformsCounter++;
+
             buildingsBackground.scroll();
             buildingsBackground2.scroll();
             enemy.scroll();   
@@ -64,12 +69,31 @@ public class FirstWorld extends GameWorld
                    enemyRespawnDelayer++;
                 }
             }
+            
+            if(plataformsCounter == 3)
+            {
+                addObject(clue, 1000, 150);
+                if(player.clueIsTouched())
+                    missionComplete();
+            }
+                
         }    
         else
         {
             stop();
         } 
     }  
+    
+    public void missionComplete()
+    {
+        MissionComplete missionCompleteScreen = new MissionComplete();
+
+        soundtrack.stop();
+        Greenfoot.delay(40);
+        addObject(missionCompleteScreen, 550 ,250);
+        Greenfoot.delay(200);
+        Greenfoot.setWorld(new SecondWorld());        
+    }
     
     public void play()
     {
@@ -79,7 +103,6 @@ public class FirstWorld extends GameWorld
     public void stop()
     {
         soundtrack.stop();
-        Greenfoot.stop();
         Greenfoot.setWorld(new GameOverScreen());
     }
 }

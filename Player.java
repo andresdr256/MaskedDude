@@ -7,7 +7,7 @@ public class Player extends Actor
     private int leftSpriteCounter = 0; 
     private int rightSpriteCounter = 0;
     private int walkDelayer = 0;
-    private int shotDelayer = 0;
+    private int shotDelayer = 8;
     
     public Player(){        
         setImage("sprites/PlayerRight0.png");        
@@ -192,6 +192,13 @@ public class Player extends Actor
         return isOver; 
     }
     
-    
-
+    public boolean clueIsTouched()
+    {
+        boolean clueIsTouched = false;
+        
+        if(isTouching(Clue.class))
+            clueIsTouched = true;
+          
+        return clueIsTouched;
+    }
 }
