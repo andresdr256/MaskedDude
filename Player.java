@@ -87,7 +87,7 @@ public class Player extends Actor
             if ( !Greenfoot.isKeyDown("RIGHT"))
                 setImage("sprites/ShotRight0.png");
             
-            if(shotDelayer == 3)
+            if(shotDelayer == 6)
             {
                 shoot();
                 shotDelayer = 0;
@@ -100,8 +100,8 @@ public class Player extends Actor
     // Accion disparar
     public void shoot()
     {
-        Bullet bullet = new Bullet(10);
-        getWorld().addObject(bullet,getX()+55,getY()-25);
+        Bullet bullet = new Bullet(15);
+        getWorld().addObject(bullet,getX()+80,getY()-25);
     }
     
     // Movimiento de caida 
@@ -148,7 +148,7 @@ public class Player extends Actor
 
     // Saltar
     public void jump(){
-        speed = -20;
+        speed = -22;
     }        
 
     // Se encuentra en el suelo
@@ -184,12 +184,14 @@ public class Player extends Actor
     {
         boolean isOver = false;
         
-        if(getY() > 500)
+        if(getY() > 500  ||  isTouching(Bullet.class))
         {
             isOver = true;
         }
         
         return isOver; 
     }
+    
+    
 
 }

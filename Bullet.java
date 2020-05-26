@@ -1,14 +1,18 @@
+
 import greenfoot.*;
 
 public class Bullet extends Actor
 {
+    private GreenfootSound gunSound = new GreenfootSound("Shot.mp3");
+    
     private int speed;
     private int damage;
+    private int soundIsPlaying = 0;
     
     public Bullet(int s)
     {
         speed = s;
-        damage = 1;
+        damage = 1;        
     }
     
     public int getDamage()
@@ -31,7 +35,7 @@ public class Bullet extends Actor
         move(speed);
         checkBoundaries();
     }
-    
+   
     public void checkBoundaries()
     {
         GreenfootImage img = getImage();
@@ -49,8 +53,21 @@ public class Bullet extends Actor
             {
                 setImage("sprites/Bullet2.png");
             
-            }else
-                livesIn.removeObject(this);
+            } else
+                livesIn.removeObject(this);  
+        
+        } else
+            play();
+
+        
+    }
+    
+    public void play()
+    {
+        if(soundIsPlaying == 0)
+        {
+            gunSound.play();
+            soundIsPlaying = 1;    
         }
-    }    
+    }
 }

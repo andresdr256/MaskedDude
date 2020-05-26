@@ -6,6 +6,7 @@ public class Enemy extends Actor
     private int speed;
     private boolean isImpacted = false;
     private int i = 0;
+    private int shotDelayer = 0;
     
     public Enemy()
     {
@@ -95,6 +96,12 @@ public class Enemy extends Actor
     
     public void shoot()
     {
+        if(shotDelayer == 150){
+            Bullet bullet = new Bullet(-10);
+            getWorld().addObject(bullet,getX()-80,getY()-30);
+            shotDelayer = 0;                
+        }else
+            shotDelayer++;
     }    
     
     public boolean checkImpact()

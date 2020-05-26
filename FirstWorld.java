@@ -33,7 +33,7 @@ public class FirstWorld extends GameWorld
 
         addObject(player, 100, 50);
 
-        addObject(enemy, player.getX()+1500, 50);
+        addObject(enemy, player.getX()+1200, 50);
     }
      
     public void act()
@@ -47,7 +47,7 @@ public class FirstWorld extends GameWorld
             enemy.scroll();   
                         
             if(enemy.getY() > 450)
-                enemy.setLocation(player.getX()+1200, 50);
+                enemy.setLocation(player.getX()+1500, 50);
                 
             if(enemy.checkImpact())
             {
@@ -57,7 +57,7 @@ public class FirstWorld extends GameWorld
             if(enemyHasBeenHit){
                if(enemyRespawnDelayer == 30)
                {
-                   enemy.setLocation(player.getX()+1000, 50);
+                   enemy.setLocation(player.getX()+1500, 50);
                    enemyRespawnDelayer = 0;
                    enemyHasBeenHit = false;
                }else{
