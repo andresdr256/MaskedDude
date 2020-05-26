@@ -11,6 +11,7 @@ public class FirstWorld extends GameWorld
     BuildingsBackground buildingsBackground = new BuildingsBackground();
     BuildingsBackground buildingsBackground2 = new BuildingsBackground();
 
+    Enemy enemy = new Enemy();
     Player player = new Player();
 
     public FirstWorld()
@@ -28,6 +29,8 @@ public class FirstWorld extends GameWorld
         addObject(platformBuilding2,1850, 500);
 
         addObject(player, 100, 50);
+
+        addObject(enemy, 1500, 50);
     }
      
     public void act()
@@ -38,6 +41,7 @@ public class FirstWorld extends GameWorld
             platformBuilding2.scrollBuilding(platformBuilding1);
             buildingsBackground.scroll();
             buildingsBackground2.scroll();
+            enemy.scroll();            
         }    
         else
         {

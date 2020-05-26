@@ -43,13 +43,14 @@ public class Bullet extends Actor
         int left = getX() - width/2;
         int right = getX() + width/2;
         
-        if(left <= 0)
-        {
-            livesIn.removeObject(this);
+        if(left <= 0  ||  right >= livesIn.getWidth()  ||  isTouching(Enemy.class))
+        {  
+            if(isTouching(Enemy.class))
+            {
+                setImage("sprites/Bullet2.png");
+            
+            }else
+                livesIn.removeObject(this);
         }
-        else if (right >= livesIn.getWidth()  )
-        {
-            livesIn.removeObject(this);
-        }
-    }
+    }    
 }

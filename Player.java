@@ -6,7 +6,8 @@ public class Player extends Actor
     private int speed;
     private int leftSpriteCounter = 0; 
     private int rightSpriteCounter = 0;
-    private int i = 0;
+    private int walkDelayer = 0;
+    private int shotDelayer = 0;
     
     public Player(){        
         setImage("sprites/PlayerRight0.png");        
@@ -25,18 +26,18 @@ public class Player extends Actor
         
         // Horizontal movement
         if(Greenfoot.isKeyDown("LEFT")  &&  x>100){
-            if(leftSpriteCounter < 8 && i == 5){
+            if(leftSpriteCounter < 8 && walkDelayer == 5){
                 if(isOnSolidGround())
                     setImage("sprites/PlayerLeft" + leftSpriteCounter + ".png");
                 leftSpriteCounter++;
-                i=0;
+                walkDelayer=0;
             }
             
             else{ 
                 if(leftSpriteCounter >= 8) 
                     leftSpriteCounter = 0;
                 
-                i++;
+                walkDelayer++;
             }
 
             x -= 10;
@@ -44,7 +45,7 @@ public class Player extends Actor
     
         if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
             
-            if(rightSpriteCounter < 8 && i == 5){
+            if(rightSpriteCounter < 8 && walkDelayer == 5){
                 if(isOnSolidGround()){
                     if(Greenfoot.isKeyDown("SPACE")){
                         setImage("sprites/ShotRight" + rightSpriteCounter + ".png");
@@ -55,14 +56,14 @@ public class Player extends Actor
                 
                 }
                 rightSpriteCounter++;
-                i=0;
+                walkDelayer=0;
             }
             
             else{ 
                 if(rightSpriteCounter >= 8) 
                     rightSpriteCounter = 0;
                 
-                i++;
+                walkDelayer++;
             }
             
             if(rightSpriteCounter != 0 && rightSpriteCounter != 4) 
@@ -80,20 +81,26 @@ public class Player extends Actor
         }
         
         //Shoot action
-        if (Greenfoot.isKeyDown("SPACE"))
+        if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround())
         {
+            // Cambia al sprite de disparo
             if ( !Greenfoot.isKeyDown("RIGHT"))
                 setImage("sprites/ShotRight0.png");
-                
-            shoot();
+            
+            if(shotDelayer == 3)
+            {
+                shoot();
+                shotDelayer = 0;
+            }    
+            else 
+                shotDelayer++;
         }
     }
 
     // Accion disparar
     public void shoot()
     {
-        Bullet bullet = new Bullet(5);
-        bullet.setRotation(getRotation());
+        Bullet bullet = new Bullet(10);
         getWorld().addObject(bullet,getX()+55,getY()-25);
     }
     
