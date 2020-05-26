@@ -87,7 +87,7 @@ public class Player extends Actor
             if ( !Greenfoot.isKeyDown("RIGHT"))
                 setImage("sprites/ShotRight0.png");
             
-            if(shotDelayer == 6)
+            if(shotDelayer == 8)
             {
                 shoot();
                 shotDelayer = 0;
