@@ -18,6 +18,9 @@ public class FirstWorld extends GameWorld
     Enemy enemy = new Enemy();
     Player player = new Player();
     Clue clue = new Clue();
+    
+    HealthBar healthbar = new HealthBar();
+
 
     public FirstWorld(int difficulty)
     {    
@@ -28,6 +31,8 @@ public class FirstWorld extends GameWorld
     
     private void prepare()
     {   
+        addObject(healthbar, 200, 40);
+        
         addObject(buildingsBackground,550, 250);
         addObject(buildingsBackground2,1649, 250);
 
@@ -103,4 +108,9 @@ public class FirstWorld extends GameWorld
         soundtrack.stop();
         Greenfoot.setWorld(new GameOverScreen());
     }
+    
+    public HealthBar getHealthBar()
+    {
+        return healthbar;
+    }    
 }
