@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class FinalWorld extends GameWorld
+public class FinalBoss extends GameWorld
 {
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
     private boolean missionComplete = false;
@@ -21,7 +21,7 @@ public class FinalWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
 
-    public FinalWorld(int difficulty)
+    public FinalBoss(int difficulty)
     {    
         play();
         
@@ -53,7 +53,7 @@ public class FinalWorld extends GameWorld
             
         if(player.isOver() == false)
        {
-            X = player.getX()+600+Greenfoot.getRandomNumber(200);
+            X = player.getX()+900+Greenfoot.getRandomNumber(400);
             Y = 50;
             
             if(background1.scroll())
@@ -102,7 +102,7 @@ public class FinalWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new FinalBoss(3));        
+        Greenfoot.setWorld(new Menu());        
     }
     
     public boolean changeBackground()

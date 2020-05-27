@@ -102,7 +102,7 @@ public class SecondWorld extends GameWorld
         Greenfoot.delay(40);
         Greenfoot.setWorld(new Level3StartScreen(3, difficulty));        
     }
-        
+
     public void play()
     {
         soundtrack.play();
