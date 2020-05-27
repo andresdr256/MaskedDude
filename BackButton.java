@@ -1,20 +1,20 @@
 import greenfoot.*;  
 
-public class OptionsButton extends Button
+public class BackButton extends Button
 {
     private int difficulty;
     
-    public OptionsButton(int difficulty)
+    public BackButton(int difficulty)
     {
         this.difficulty = difficulty;
     }
     
     public void act() 
     {
-        checkMouse();
-                
+        checkMouse();  
+        
         if(Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new Options(difficulty));
+            Greenfoot.setWorld(new Menu());
         }
     }    
 }

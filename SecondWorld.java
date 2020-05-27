@@ -7,6 +7,7 @@ public class SecondWorld extends GameWorld
     private boolean enemyHasBeenHit = false;
     private int enemyRespawnDelayer = 0;
     private int floorsCounter = 0;
+    private int difficulty;
     private int X;
     private int Y;
     
@@ -17,9 +18,12 @@ public class SecondWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
 
-    public SecondWorld()
+    public SecondWorld(int difficulty)
     {
         play();
+        
+        this.difficulty = difficulty;
+        
         prepare();
     }
     
@@ -68,7 +72,7 @@ public class SecondWorld extends GameWorld
                 }               
             }
             
-            if(floorsCounter == 4)
+            if(floorsCounter == 3)
             {
                 addObject(clue, 1050, 400);
                 GreenfootImage tempImage = clue.getImage();
@@ -94,7 +98,7 @@ public class SecondWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new Level3StartScreen(3));        
+        Greenfoot.setWorld(new Level3StartScreen(3, difficulty));        
     }
         
     public void play()

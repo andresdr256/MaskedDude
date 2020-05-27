@@ -1,10 +1,10 @@
-import greenfoot.*;  
+import greenfoot.*; 
 
-public class PlayButton extends Button
+public class MainMenuButton extends Button
 {
     private int difficulty;
     
-    public PlayButton(int difficulty)
+    public MainMenuButton(int difficulty)
     {
         this.difficulty = difficulty;
     }
@@ -14,7 +14,7 @@ public class PlayButton extends Button
         checkMouse();  
         
         if(Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new Level1StartScreen(1, difficulty));
+            Greenfoot.setWorld(new Menu());
         }
-    }    
+    } 
 }

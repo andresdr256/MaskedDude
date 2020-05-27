@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=Level1StartScreen
-comment1.params=level
-comment1.target=Level1StartScreen(int)
+comment1.params=level\ difficulty
+comment1.target=Level1StartScreen(int,\ int)
 numComments=2

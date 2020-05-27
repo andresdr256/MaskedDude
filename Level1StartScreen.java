@@ -2,8 +2,8 @@ import greenfoot.*;
 
 public class Level1StartScreen extends LevelStartScreen
 {
-    public Level1StartScreen(int level)
+    public Level1StartScreen(int level, int difficulty)
     {
-        setLevel(level);        
+        setLevel(level, difficulty);        
     }
 }

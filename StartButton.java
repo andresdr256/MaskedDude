@@ -3,16 +3,22 @@ import greenfoot.*;
 public class StartButton extends Button
 {
     private GreenfootSound soundtrack = new GreenfootSound("MenuSound2.mp3");    
-
+    
+    private int difficulty;
+    
+    public StartButton(int difficulty)
+    {
+        this.difficulty = difficulty;
+        soundtrack.play();
+    }
+    
     public void act() 
     {
-        soundtrack.play();
-        
         checkMouse();  
         
         if(Greenfoot.mouseClicked(this)){
             soundtrack.stop();
-            Greenfoot.setWorld(new Level1StartScreen(1));
+            Greenfoot.setWorld(new InstructionsScreen(difficulty));
         }
-    }    
+    }   
 }

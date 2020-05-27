@@ -6,6 +6,7 @@ public class LevelStartScreen extends World
     GreenfootImage tempImage = getBackground();
     private int i = 0;
     private int level;
+    private int difficulty;
 
     public LevelStartScreen()
     {    
@@ -16,7 +17,7 @@ public class LevelStartScreen extends World
     public void act()
     {              
         if(i>35)
-            startLevel(level);
+            startLevel(level, difficulty);
         
         resizeBackground();
         i++;
@@ -29,9 +30,10 @@ public class LevelStartScreen extends World
         setBackground(tempImage);        
     }
     
-    public void setLevel(int level)
+    public void setLevel(int level, int difficulty)
     {
         this.level = level;
+        this.difficulty = difficulty;
     }
     
     public void play()
@@ -39,17 +41,17 @@ public class LevelStartScreen extends World
         soundtrack.play();
     } 
 
-    public void startLevel(int level)
+    public void startLevel(int level, int difficulty)
     {
         soundtrack.stop();
         
         if(level == 1)
-            Greenfoot.setWorld(new InstructionsScreen());        
+            Greenfoot.setWorld(new FirstWorld(difficulty));        
 
         if(level == 2)
-            Greenfoot.setWorld(new SecondWorld());
+            Greenfoot.setWorld(new SecondWorld(difficulty));
         
         if(level == 3)
-            Greenfoot.setWorld(new FinalWorld());
+            Greenfoot.setWorld(new FinalWorld(difficulty));
     }
 }

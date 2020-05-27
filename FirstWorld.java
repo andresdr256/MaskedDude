@@ -7,6 +7,7 @@ public class FirstWorld extends GameWorld
     private boolean enemyHasBeenHit = false;
     private int enemyRespawnDelayer = 0;
     private int plataformsCounter = 0;
+    private int difficulty;
     
     PlatformBuilding platformBuilding1= new PlatformBuilding();
     PlatformBuilding platformBuilding2= new PlatformBuilding();
@@ -18,9 +19,10 @@ public class FirstWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
 
-    public FirstWorld()
+    public FirstWorld(int difficulty)
     {    
         prepare();
+        this.difficulty = difficulty;
         play();
     }
     
@@ -68,7 +70,7 @@ public class FirstWorld extends GameWorld
                 }
             }
             
-            if(plataformsCounter == 3)
+            if(plataformsCounter == 2)
             {
                 addObject(clue, 1000, 150);
                 if(player.clueIsTouched())
@@ -88,7 +90,7 @@ public class FirstWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new Level2StartScreen(2));        
+        Greenfoot.setWorld(new Level2StartScreen(2, difficulty));        
     }
     
     public void play()

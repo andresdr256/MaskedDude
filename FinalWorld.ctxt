@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=FinalWorld
-comment1.params=
-comment1.target=FinalWorld()
+comment1.params=difficulty
+comment1.target=FinalWorld(int)
 numComments=2

@@ -6,7 +6,7 @@ public class Button extends Actor
     private boolean mouseOver = false;
     private static int MAX_TRANS = 255;
     private int mouseOverSound = 0;
-
+   
     public void checkMouse(){
         if(Greenfoot.mouseMoved(null)){
             mouseOver = Greenfoot.mouseMoved(this);
