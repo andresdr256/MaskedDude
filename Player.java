@@ -198,7 +198,8 @@ public class Player extends Actor
     public boolean isOver()
     {
         boolean isOver = false;
-        
+        Actor bullet =  getOneIntersectingObject(Bullet.class);
+
         if(getY() > 500  ||  isTouching(Bullet.class))
         {
             isOver = true;
