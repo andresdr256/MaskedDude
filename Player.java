@@ -202,8 +202,8 @@ public class Player extends Actor
         if(bullet != null)
         {
             World myWorld = getWorld();
-            FirstWorld firstWorld = (FirstWorld)myWorld;
-            HealthBar healthbar = firstWorld.getHealthBar();
+            GameWorld gameWorld = (GameWorld)myWorld;
+            HealthBar healthbar = gameWorld.getHealthBar();
             if(hitByBullet == false)
             {
                 healthbar.loseHealth();
