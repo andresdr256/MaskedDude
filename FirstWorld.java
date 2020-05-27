@@ -39,6 +39,8 @@ public class FirstWorld extends GameWorld
         addObject(platformBuilding1,550, 550);
         addObject(platformBuilding2,1850, 500);
 
+        addObject(healthbar, 200, 40);        
+        
         addObject(player, 100, 200);
 
         addObject(enemy, player.getX()+1200, 50);
