@@ -200,12 +200,23 @@ public class Player extends Actor
         boolean isOver = false;
         Actor bullet =  getOneIntersectingObject(Bullet.class);
 
-        if(getY() > 500  ||  isTouching(Bullet.class))
+        if(bullet != null)
         {
-            isOver = true;
+            World myWorld = getWorld();
+            FirstWorld firstWorld = (FirstWorld)myWorld;
+            HealthBar healthbar = firstWorld.getHealthBar();
+            if(hitByBullet == false)
+            {
+                healthbar.loseHealth();
+                hitByBullet = true;
+                if(healthbar.health <= 0)
+                {
+                    isOver = true;
+                }
+            } else {
+                hitByBullet = false;
+              }
         }
-        
-        return isOver; 
     }
     
     public boolean clueIsTouched()
