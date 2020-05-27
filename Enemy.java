@@ -61,7 +61,7 @@ public class Enemy extends Actor
                isOnGround = true;
         }
 
-        if(getY() > 320  &&  getY() < 400  &&  isTouching(Floor.class))
+        if(getY() > 380  &&  getY() < 600  &&  isTouching(Floor.class))
             isOnGround = true;
         
         return isOnGround;

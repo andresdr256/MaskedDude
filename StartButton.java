@@ -12,7 +12,7 @@ public class StartButton extends Button
         
         if(Greenfoot.mouseClicked(this)){
             soundtrack.stop();
-            Greenfoot.setWorld(new Level1StartScreen());
+            Greenfoot.setWorld(new Level1StartScreen(1));
         }
     }    
 }

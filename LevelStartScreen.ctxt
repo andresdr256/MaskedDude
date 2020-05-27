@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=LevelStartScreen
+comment1.params=
+comment1.target=LevelStartScreen()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ resizeBackground()
+comment4.params=level
+comment4.target=void\ setLevel(int)
+comment5.params=
+comment5.target=void\ play()
+comment6.params=level
+comment6.target=void\ startLevel(int)
+numComments=7

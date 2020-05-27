@@ -88,9 +88,7 @@ public class FirstWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        addObject(missionCompleteScreen, 550 ,250);
-        Greenfoot.delay(200);
-        Greenfoot.setWorld(new SecondWorld());        
+        Greenfoot.setWorld(new Level2StartScreen(2));        
     }
     
     public void play()

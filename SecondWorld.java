@@ -29,7 +29,7 @@ public class SecondWorld extends GameWorld
         addObject(floor2,1650, 250);
         floor2.setImage("FloorBLevel2.png");
         
-        addObject(player, 100, 300);
+        addObject(player, 100, 400);
         
         addObject(enemy, player.getX()+1200, 50);
     }
@@ -94,9 +94,7 @@ public class SecondWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        addObject(missionCompleteScreen, 550 ,250);
-        Greenfoot.delay(200);
-        Greenfoot.setWorld(new FinalWorld());        
+        Greenfoot.setWorld(new Level3StartScreen(3));        
     }
         
     public void play()

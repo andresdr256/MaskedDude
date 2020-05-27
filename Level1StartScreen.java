@@ -1,14 +1,9 @@
 import greenfoot.*;  
 
-public class Level1StartScreen extends World
+public class Level1StartScreen extends LevelStartScreen
 {
-    public Level1StartScreen()
-    {    
-        super(1100, 500, 1); 
-    }
-    
-    public void act(){        
-        Greenfoot.delay(100);
-        Greenfoot.setWorld(new InstructionsScreen());
+    public Level1StartScreen(int level)
+    {
+        setLevel(level);        
     }
 }
