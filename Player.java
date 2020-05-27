@@ -2,6 +2,8 @@ import greenfoot.*;
 
 public class Player extends Actor
 {
+    boolean hitByBullet = false;
+
     private final int GRAVITY = 1;
     private boolean playerIsDown = false;
     private int leftSpriteCounter = 0; 
