@@ -1,9 +1,9 @@
 import greenfoot.*;  
 
+
 public class Menu extends World
 {    
     private int difficulty;
-    
     
     public Menu(int difficulty)
     {    
