@@ -19,9 +19,6 @@ public class FirstWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
     
-    HealthBar healthbar = new HealthBar();
-
-
     public FirstWorld(int difficulty)
     {    
         prepare();
@@ -31,8 +28,6 @@ public class FirstWorld extends GameWorld
     
     private void prepare()
     {   
-        addObject(healthbar, 200, 40);
-        
         addObject(buildingsBackground,550, 250);
         addObject(buildingsBackground2,1649, 250);
 
