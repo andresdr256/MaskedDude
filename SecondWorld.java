@@ -33,6 +33,8 @@ public class SecondWorld extends GameWorld
         addObject(floor2,1650, 250);
         floor2.setImage("FloorBLevel2.png");
         
+        addObject(healthbar, 200, 40);        
+        
         addObject(player, 100, 400);
         
         addObject(enemy, player.getX()+1200, 50);
