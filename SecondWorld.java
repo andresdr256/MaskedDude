@@ -66,9 +66,16 @@ public class SecondWorld extends GameWorld
                 }               
             }
             
-            if(floorsCounter == 3)
+            if(floorsCounter == 2)
             {
-                addObject(clue, 800, 50);
+                addObject(clue, 1050, 400);
+                GreenfootImage tempImage = clue.getImage();
+                tempImage.setTransparency(0);
+                clue.setImage(tempImage);
+                
+                floor1.setImage("FloorDLevel2.png");
+                floor2.setImage("FloorCLevel2.png");
+                enemy.setLocation(player.getX()+1000, 50);
                 
                 if(player.clueIsTouched())
                     missionComplete();
