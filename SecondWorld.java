@@ -48,8 +48,10 @@ public class SecondWorld extends GameWorld
             enemy.scroll();   
             
             if(enemy.getY() > 450)
+            {
                 enemy.setLocation(X, Y);
-                
+            }
+            
             if(enemy.checkImpact())
             {
                 enemyHasBeenHit = true;
@@ -66,7 +68,7 @@ public class SecondWorld extends GameWorld
                 }               
             }
             
-            if(floorsCounter == 2)
+            if(floorsCounter == 4)
             {
                 addObject(clue, 1050, 400);
                 GreenfootImage tempImage = clue.getImage();

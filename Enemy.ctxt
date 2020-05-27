@@ -14,4 +14,6 @@ comment6.params=
 comment6.target=void\ shoot()
 comment7.params=
 comment7.target=boolean\ checkImpact()
-numComments=8
+comment8.params=
+comment8.target=void\ animation()
+numComments=9

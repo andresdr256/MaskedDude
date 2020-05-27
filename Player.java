@@ -3,11 +3,12 @@ import greenfoot.*;
 public class Player extends Actor
 {
     private final int GRAVITY = 1;
-    private int speed;
+    private boolean playerIsDown = false;
     private int leftSpriteCounter = 0; 
     private int rightSpriteCounter = 0;
     private int walkDelayer = 0;
     private int shotDelayer = 8;
+    private int speed;
     
     public Player(){        
         setImage("sprites/PlayerRight0.png");        
@@ -25,7 +26,7 @@ public class Player extends Actor
         int x = getX();
         
         // Horizontal movement
-        if(Greenfoot.isKeyDown("LEFT")  &&  x>100){
+        if(Greenfoot.isKeyDown("LEFT")  &&  x>100  &&  !playerIsDown){
             if(leftSpriteCounter < 8 && walkDelayer == 5){
                 if(isOnSolidGround())
                     setImage("sprites/PlayerLeft" + leftSpriteCounter + ".png");
@@ -43,7 +44,7 @@ public class Player extends Actor
             x -= 15;
         }
     
-        if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
+        if(Greenfoot.isKeyDown("RIGHT")  &&  x<900  &&  !playerIsDown){
             
             if(rightSpriteCounter < 8 && walkDelayer == 5){
                 if(isOnSolidGround()){
@@ -79,9 +80,17 @@ public class Player extends Actor
             setImage("sprites/Jump0.png");
             jump();           
         }
+
+        if(Greenfoot.isKeyDown("DOWN") && isOnSolidGround()){
+            setImage("sprites/PlayerDown.png");
+            playerIsDown = true;
+        }        
         
+        if(!Greenfoot.isKeyDown("DOWN"))
+            playerIsDown = false;
+            
         //Shoot action
-        if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround())
+        if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround() && !playerIsDown)
         {
             // Cambia al sprite de disparo
             if ( !Greenfoot.isKeyDown("RIGHT"))
@@ -163,7 +172,7 @@ public class Player extends Actor
                isOnGround = true;
         }
         
-        if(getY() > 330  &&  getY() < 350  &&  isTouching(Floor.class))
+        if(getY() > 400  &&  getY() < 420  &&  isTouching(Floor.class))
             isOnGround = true;
         
         return isOnGround;

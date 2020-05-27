@@ -3,10 +3,11 @@ import greenfoot.*;
 public class Enemy extends Actor
 {
     private final int GRAVITY = 1;
-    private int speed;
+    private boolean canShot = true;
     private boolean isImpacted = false;
-    private int i = 0;
     private int shotDelayer = 0;
+    private int speed;    
+    private int i = 0;
     
     public Enemy()
     {
@@ -19,39 +20,7 @@ public class Enemy extends Actor
         fall();
         shoot();
         checkImpact();
-
-        if(isImpacted)
-        {
-            switch(i){
-                case 0:
-                    setImage("sprites/Enemy2.png");
-                    i++;
-                    break;
-                    
-                case 5:
-                    setImage("sprites/Enemy3.png");
-                    setLocation(getX()+35, getY()+10);
-                    i++;
-                    break;
-                    
-                case 10:
-                    setImage("sprites/Enemy4.png");
-                    setLocation(getX()+35, getY()+10);
-                    i++;
-                    break;                
-            
-                case 30:
-                    i=0;
-                    isImpacted = false;
-                    setImage("sprites/Enemy1.png");
-                    break;                
-                    
-                default:
-                    i++;
-            }
-            
-        }    
-
+        animation();
     }
         
     public void scroll() 
@@ -74,6 +43,7 @@ public class Enemy extends Actor
                 speed = 0;
             }
             else{
+                canShot = true;
                 speed += GRAVITY;            
             }
 
@@ -99,19 +69,59 @@ public class Enemy extends Actor
     
     public void shoot()
     {
-        if(shotDelayer == 150){
+        if(shotDelayer == 100){
             Bullet bullet = new Bullet(-10);
             getWorld().addObject(bullet,getX()-80,getY()-30);
             shotDelayer = 0;                
         }else
-            shotDelayer++;
+        {
+            if(canShot)
+                shotDelayer++;
+        }
     }    
     
     public boolean checkImpact()
     {
         if(isTouching(Bullet.class))
+        {
             isImpacted = true;
-        
+        }
         return isImpacted;
+    }    
+    
+    public void animation()
+    {
+        if(isImpacted)
+        {
+            switch(i){
+                case 0:
+                    setImage("sprites/Enemy2.png");
+                    i++;
+                    canShot = false;
+                    break;
+                    
+                case 5:
+                    setImage("sprites/Enemy3.png");
+                    setLocation(getX()+35, getY()+10);
+                    i++;
+                    break;
+                    
+                case 10:
+                    setImage("sprites/Enemy4.png");
+                    setLocation(getX()+35, getY()+10);
+                    i++;
+                    break;                
+            
+                case 30:
+                    i=0;
+                    isImpacted = false;
+                    canShot = true;
+                    setImage("sprites/Enemy1.png");
+                    break;                
+                    
+                default:
+                    i++;
+            }
+        }    
     }
 }

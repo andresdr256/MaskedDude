@@ -68,7 +68,7 @@ public class FirstWorld extends GameWorld
                 }
             }
             
-            if(plataformsCounter == 1)
+            if(plataformsCounter == 3)
             {
                 addObject(clue, 1000, 150);
                 if(player.clueIsTouched())

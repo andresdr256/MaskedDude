@@ -13,7 +13,6 @@ public class FloorLevel2 extends Floor
                 setLocation(1650, 250);
                 floorChanged = true;
             }
-        
             setLocation(getX()-5, getY());
         }
         
