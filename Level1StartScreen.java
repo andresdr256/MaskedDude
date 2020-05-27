@@ -8,7 +8,7 @@ public class Level1StartScreen extends World
     }
     
     public void act(){        
-        Greenfoot.delay(190);
-        Greenfoot.setWorld(new FirstWorld());
+        Greenfoot.delay(100);
+        Greenfoot.setWorld(new InstructionsScreen());
     }
 }
