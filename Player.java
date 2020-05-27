@@ -1,4 +1,5 @@
 import greenfoot.*;  
+import java.lang.Class;
 
 public class Player extends Actor
 {
