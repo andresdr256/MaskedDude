@@ -1,4 +1,4 @@
-import greenfoot.*;  
+import greenfoot.*;
 import java.lang.Class;
 
 public class Player extends Actor
@@ -199,7 +199,6 @@ public class Player extends Actor
     {
         boolean isOver = false;
         Actor bullet =  getOneIntersectingObject(Bullet.class);
-
         if(bullet != null)
         {
             World myWorld = getWorld();
@@ -213,10 +212,18 @@ public class Player extends Actor
                 {
                     isOver = true;
                 }
-            } else {
+            }
+            else {
                 hitByBullet = false;
-              }
+            }
         }
+        
+        if(getY() > 500)
+        {
+            isOver = true;
+        }
+        
+        return isOver; 
     }
     
     public boolean clueIsTouched()
