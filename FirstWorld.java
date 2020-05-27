@@ -1,5 +1,4 @@
 import greenfoot.*;
-import java.util.Random;
     
 public class FirstWorld extends GameWorld
 {    
@@ -17,7 +16,6 @@ public class FirstWorld extends GameWorld
 
     Enemy enemy = new Enemy();
     Player player = new Player();
-
     Clue clue = new Clue();
 
     public FirstWorld()
@@ -34,7 +32,7 @@ public class FirstWorld extends GameWorld
         addObject(platformBuilding1,550, 550);
         addObject(platformBuilding2,1850, 500);
 
-        addObject(player, 100, 50);
+        addObject(player, 100, 200);
 
         addObject(enemy, player.getX()+1200, 50);
     }
@@ -70,7 +68,7 @@ public class FirstWorld extends GameWorld
                 }
             }
             
-            if(plataformsCounter == 3)
+            if(plataformsCounter == 1)
             {
                 addObject(clue, 1000, 150);
                 if(player.clueIsTouched())

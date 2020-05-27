@@ -2,4 +2,14 @@
 comment0.target=SecondWorld
 comment1.params=
 comment1.target=SecondWorld()
-numComments=2
+comment2.params=
+comment2.target=void\ prepare()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ missionComplete()
+comment5.params=
+comment5.target=void\ play()
+comment6.params=
+comment6.target=void\ stop()
+numComments=7

@@ -40,7 +40,7 @@ public class Player extends Actor
                 walkDelayer++;
             }
 
-            x -= 10;
+            x -= 15;
         }
     
         if(Greenfoot.isKeyDown("RIGHT")  &&  x<900){
@@ -162,6 +162,9 @@ public class Player extends Actor
            getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null){ 
                isOnGround = true;
         }
+        
+        if(getY() > 330  &&  getY() < 350  &&  isTouching(Floor.class))
+            isOnGround = true;
         
         return isOnGround;
     }

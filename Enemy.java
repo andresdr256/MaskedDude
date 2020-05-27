@@ -90,6 +90,9 @@ public class Enemy extends Actor
            getOneObjectAtOffset(imageWidth / 2, imageHeight / 2, Platform.class) != null){ 
                isOnGround = true;
         }
+
+        if(getY() > 320  &&  getY() < 400  &&  isTouching(Floor.class))
+            isOnGround = true;
         
         return isOnGround;
     }

@@ -1,12 +1,7 @@
 import greenfoot.*;  
 
 public class BuildingsBackground extends Actor
-{    
-    public void act() 
-    {
-        scroll();
-    }    
-    
+{   
     public void scroll()
     {
         if(Greenfoot.isKeyDown("right"))
