@@ -1,11 +1,7 @@
 #BlueJ class context
 comment0.target=FinalScreen
-comment1.params=
-comment1.target=FinalScreen()
+comment1.params=score
+comment1.target=FinalScreen(int)
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ resizeBackground()
-comment4.params=
-comment4.target=void\ play()
-numComments=5
+numComments=3

@@ -9,7 +9,10 @@ public class FinalWorld extends GameWorld
     private boolean backgroundChanged = false;
     private int enemyRespawnDelayer = 0;
     private int floorsCounter = 0;
+    private int scoreDelayer;
     private int difficulty;
+    private int score;
+    private int time;
     private int X;
     private int Y;
     
@@ -22,11 +25,12 @@ public class FinalWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
 
-    public FinalWorld(int difficulty)
+    public FinalWorld(int difficulty, int score)
     {    
         play();
         
         this.difficulty = difficulty;
+        scoreCounter.addScore(score);
         
         prepare();
     }
@@ -40,6 +44,7 @@ public class FinalWorld extends GameWorld
         background2.setImage("Background3B.png");    
 
         addObject(healthbar, 200, 40);        
+        addObject(scoreCounter, 950, 35);
         
         addObject(player, 100, 400);
         
@@ -57,6 +62,8 @@ public class FinalWorld extends GameWorld
        if(!backgroundChanged)  
             changeBackground();
             
+       if(timer.getTime() <= 0)
+           stop();
             
         if(player.isOver() == false)
        {
@@ -76,7 +83,14 @@ public class FinalWorld extends GameWorld
             
             if(enemy.checkImpact())
             {
-                enemyHasBeenHit = true;
+               enemyHasBeenHit = true;
+  
+               if(scoreDelayer > 25)
+               {
+                   scoreCounter.addScore(5);
+                   scoreDelayer = 0;           
+               }else
+                   scoreDelayer++;                   
             }
             
             if(enemyHasBeenHit){
@@ -105,11 +119,13 @@ public class FinalWorld extends GameWorld
     
     public void missionComplete()
     {
-        MissionComplete missionCompleteScreen = new MissionComplete();
+        time = timer.getTime();        
+        scoreCounter.addScore(time);
+        score = scoreCounter.getScore();
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new FinalScreen());        
+        Greenfoot.setWorld(new FinalScreen(score));        
     }
     
     public boolean changeBackground()
@@ -130,7 +146,8 @@ public class FinalWorld extends GameWorld
 
     public void stop()
     {
+        score = scoreCounter.getScore();
         soundtrack.stop();
-        Greenfoot.setWorld(new GameOverScreen());
+        Greenfoot.setWorld(new GameOverScreen(score));
     }    
 }

@@ -3,33 +3,20 @@ import greenfoot.*;
 public class FinalScreen extends World
 {
     private GreenfootSound soundtrack = new GreenfootSound("MenuSound1.mp3");
-    GreenfootImage tempImage = getBackground();
     private int i = 0;
+    private int score;
 
-    public FinalScreen()
+    public FinalScreen(int score)
     {    
-        super(1100, 500, 1);         
-        play();
+        super(1100, 500, 1);
+        this.score = score;
+        soundtrack.play();
     }
     
     public void act()
     {              
-        if(i>35)
-            Greenfoot.setWorld(new Menu());
-        
-        resizeBackground();
-        i++;
-        Greenfoot.delay(5);            
+        Greenfoot.delay(150);
+        soundtrack.stop();
+        Greenfoot.setWorld(new ScoreScreen(score));                    
     }    
-    
-    public void resizeBackground()
-    {
-        tempImage.scale(tempImage.getWidth(), tempImage.getHeight()+1);
-        setBackground(tempImage);        
-    }
-    
-    public void play()
-    {
-        soundtrack.play();
-    }
 }

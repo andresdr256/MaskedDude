@@ -1,5 +1,7 @@
 #BlueJ class context
 comment0.target=GameOverScreen
-comment1.params=
-comment1.target=GameOverScreen()
-numComments=2
+comment1.params=score
+comment1.target=GameOverScreen(int)
+comment2.params=
+comment2.target=void\ act()
+numComments=3
