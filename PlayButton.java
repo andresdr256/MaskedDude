@@ -3,7 +3,7 @@ import greenfoot.*;
 public class PlayButton extends Button
 {
     private int difficulty;
-    
+
     public PlayButton(int difficulty)
     {
         this.difficulty = difficulty;

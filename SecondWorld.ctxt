@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=SecondWorld
-comment1.params=difficulty
-comment1.target=SecondWorld(int)
+comment1.params=difficulty\ score
+comment1.target=SecondWorld(int,\ int)
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=

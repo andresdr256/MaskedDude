@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=FinalWorld
-comment1.params=difficulty
-comment1.target=FinalWorld(int)
+comment1.params=difficulty\ score
+comment1.target=FinalWorld(int,\ int)
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=

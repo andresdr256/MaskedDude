@@ -3,11 +3,15 @@ import greenfoot.*;
 public class FirstWorld extends GameWorld
 {    
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
+    private boolean difficultyIsSetOnPlayer = false;
     private boolean missionComplete = false;
     private boolean enemyHasBeenHit = false;
     private int enemyRespawnDelayer = 0;
     private int plataformsCounter = 0;
+    private int scoreDelayer;
     private int difficulty;
+    private int score;    
+    private int time;    
     
     PlatformBuilding platformBuilding1= new PlatformBuilding();
     PlatformBuilding platformBuilding2= new PlatformBuilding();
@@ -21,8 +25,8 @@ public class FirstWorld extends GameWorld
     
     public FirstWorld(int difficulty)
     {    
-        prepare();
         this.difficulty = difficulty;
+        prepare();
         play();
     }
     
@@ -35,14 +39,24 @@ public class FirstWorld extends GameWorld
         addObject(platformBuilding2,1850, 500);
 
         addObject(healthbar, 200, 40);        
+        addObject(scoreCounter, 950, 35);
         
         addObject(player, 100, 200);
 
-        addObject(enemy, player.getX()+1200, 50);
+        addObject(enemy, player.getX()+1200, 50);              
     }
      
     public void act()
     {   
+        if(!difficultyIsSetOnPlayer)
+        {
+            player.setDifficulty(difficulty);            
+            difficultyIsSetOnPlayer = true;
+        }
+        
+        if(timer.getTime() <= 0)
+            stop();
+        
         if(player.isOver() == false)
         {
             platformBuilding1.scrollBuilding(platformBuilding2);
@@ -58,7 +72,14 @@ public class FirstWorld extends GameWorld
                 
             if(enemy.checkImpact())
             {
-                enemyHasBeenHit = true;
+               enemyHasBeenHit = true;
+  
+               if(scoreDelayer > 25)
+               {
+                   scoreCounter.addScore(5);
+                   scoreDelayer = 0;           
+               }else
+                   scoreDelayer++;                   
             }
             
             if(enemyHasBeenHit){
@@ -88,26 +109,29 @@ public class FirstWorld extends GameWorld
     
     public void missionComplete()
     {
-        MissionComplete missionCompleteScreen = new MissionComplete();
-
+        time = timer.getTime();        
+        scoreCounter.addScore(time);
+        score = scoreCounter.getScore();
+        
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new Level2StartScreen(2, difficulty));        
+        Greenfoot.setWorld(new Level2StartScreen(2, difficulty, score));        
     }
     
     public void play()
     {
         soundtrack.play();
     }
-
-    public void stop()
-    {
-        soundtrack.stop();
-        Greenfoot.setWorld(new GameOverScreen());
-    }
     
     public HealthBar getHealthBar()
     {
         return healthbar;
+    }    
+
+    public void stop()
+    {
+        score = scoreCounter.getScore();
+        soundtrack.stop();
+        Greenfoot.setWorld(new GameOverScreen(score));
     }    
 }

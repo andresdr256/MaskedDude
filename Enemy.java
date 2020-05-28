@@ -19,7 +19,6 @@ public class Enemy extends Actor
     {
         fall();
         shoot();
-        checkImpact();
         animation();
     }
         

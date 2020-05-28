@@ -9,7 +9,7 @@ public class InstructionsScreen extends World
         super(1100, 500, 1); 
         
         this.difficulty = difficulty;
-        
+
         prepare();
     }
     
