@@ -3,6 +3,7 @@ import greenfoot.*;
 public class FinalBoss extends GameWorld
 {
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
+    private boolean difficultyIsSetOnPlayer = false;
     private boolean missionComplete = false;
     private boolean enemyHasBeenHit = false;
     private boolean backgroundChanged = false;
@@ -47,6 +48,12 @@ public class FinalBoss extends GameWorld
 
     public void act()
     {
+        if(!difficultyIsSetOnPlayer)
+        {
+            player.setDifficulty(difficulty);            
+            difficultyIsSetOnPlayer = true;
+        }        
+        
        if(!backgroundChanged)  
             changeBackground();
             

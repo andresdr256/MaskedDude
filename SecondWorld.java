@@ -3,6 +3,7 @@ import greenfoot.*;
 public class SecondWorld extends GameWorld
 {
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
+    private boolean difficultyIsSetOnPlayer = false;
     private boolean missionComplete = false;
     private boolean enemyHasBeenHit = false;
     private int enemyRespawnDelayer = 0;
@@ -42,6 +43,12 @@ public class SecondWorld extends GameWorld
     
     public void act()
     {
+       if(!difficultyIsSetOnPlayer)
+       {
+           player.setDifficulty(difficulty);            
+           difficultyIsSetOnPlayer = true;
+       }        
+        
        if(player.isOver() == false)
        {
             X = player.getX()+1000+Greenfoot.getRandomNumber(400);

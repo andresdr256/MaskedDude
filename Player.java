@@ -9,9 +9,11 @@ public class Player extends Actor
     private boolean playerIsDown = false;
     private int leftSpriteCounter = 0; 
     private int rightSpriteCounter = 0;
+    private int loseHealthDelayer = 0;
     private int walkDelayer = 0;
     private int shotDelayer = 8;
     private int speed;
+    private int difficulty;
     
     public Player(){        
         setImage("sprites/PlayerRight0.png");        
@@ -20,6 +22,11 @@ public class Player extends Actor
     
     public void act() {        
         processKeys();
+    }
+    
+    public void setDifficulty(int difficulty)
+    {
+        this.difficulty = difficulty;
     }
     
     public void processKeys() {
@@ -204,17 +211,20 @@ public class Player extends Actor
             World myWorld = getWorld();
             GameWorld gameWorld = (GameWorld)myWorld;
             HealthBar healthbar = gameWorld.getHealthBar();
-            if(hitByBullet == false)
+            if(hitByBullet == false  &&  loseHealthDelayer >= 10)
             {
-                healthbar.loseHealth();
+                healthbar.loseHealth(difficulty);
                 hitByBullet = true;
                 if(healthbar.health <= 0)
                 {
                     isOver = true;
                 }
+                
+                loseHealthDelayer = 0;
             }
             else {
                 hitByBullet = false;
+                loseHealthDelayer++;
             }
         }
         

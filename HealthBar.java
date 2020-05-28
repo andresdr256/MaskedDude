@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class HealthBar extends Actor
 {
-    int health = 4;
+    int health = 6;
     int healthBarWidth = 80;
     int healthBarHeight = 15;
     int pixelsPerHealthPoint = (int)healthBarWidth/health;
@@ -27,8 +27,8 @@ public class HealthBar extends Actor
         myImage.fillRect(1, 1, health*pixelsPerHealthPoint, healthBarHeight);
     }
 
-    public void loseHealth()
+    public void loseHealth(int healthLose)
     {
-        health--;
+        health = health - healthLose;
     }
 }
