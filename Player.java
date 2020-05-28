@@ -207,6 +207,7 @@ public class Player extends Actor
             if(hitByBullet == false)
             {
                 healthbar.loseHealth();
+                getWorld().removeObject(bullet); 
                 hitByBullet = true;
                 if(healthbar.health <= 0)
                 {
