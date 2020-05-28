@@ -92,7 +92,7 @@ public class FinalWorld extends GameWorld
             
             if(floorsCounter == 4)
             {
-                addObject(clue, 1000, 150);
+                addObject(clue, 1000, 400);
 
                 if(player.clueIsTouched())
                     missionComplete();
@@ -109,7 +109,7 @@ public class FinalWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new FinalBoss(3));        
+        Greenfoot.setWorld(new FinalScreen());        
     }
     
     public boolean changeBackground()
