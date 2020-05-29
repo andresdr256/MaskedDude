@@ -1,13 +1,12 @@
 import greenfoot.*;
 
-public class FinalWorld extends GameWorld
+public class BossFight extends GameWorld
 {
     private GreenfootSound soundtrack = new GreenfootSound("World1SoundTrack.mp3");
     private boolean difficultyIsSetOnPlayer = false;
     private boolean missionComplete = false;
-    private boolean enemyHasBeenHit = false;
+    private boolean enemyBossHasBeenHit = false;
     private boolean backgroundChanged = false;
-    private int enemyRespawnDelayer = 0;
     private int floorsCounter = 0;
     private int scoreDelayer;
     private int difficulty;
@@ -21,12 +20,11 @@ public class FinalWorld extends GameWorld
     FinalBackground background1 = new FinalBackground();
     FinalBackground background2 = new FinalBackground();
     
-    Enemy enemy = new Enemy();
     Player player = new Player();
     Clue clue = new Clue();
     EnemyBoss enemyBoss = new EnemyBoss();
 
-    public FinalWorld(int difficulty, int score)
+    public BossFight(int difficulty, int score)
     {    
         play();
         
@@ -48,8 +46,6 @@ public class FinalWorld extends GameWorld
         addObject(scoreCounter, 950, 35);
 
         addObject(player, 100, 400);
-
-        addObject(enemy, player.getX()+1200, 50);
     }
 
     public void act()
@@ -59,59 +55,38 @@ public class FinalWorld extends GameWorld
             player.setDifficulty(difficulty);            
             difficultyIsSetOnPlayer = true;
         }        
-        
-       if(!backgroundChanged)  
-            changeBackground();
-            
+   
        if(timer.getTime() <= 0)
            stop();
             
         if(player.isOver() == false)
        {
-            X = player.getX()+600+Greenfoot.getRandomNumber(200);
-            Y = 50;
-            
-            if(background1.scroll())
-                floorsCounter++;            
-            background2.scroll();
-            
-            enemy.scroll();   
-            
-            if(enemy.getY() > 450)
-            {
-                enemy.setLocation(X, Y);
-            }
-            
-            if(enemy.checkImpact())
-            {
-               enemyHasBeenHit = true;
-  
-               if(scoreDelayer > 25)
-               {
-                   scoreCounter.addScore(5);
-                   scoreDelayer = 0;           
-               }else
-                   scoreDelayer++;                   
-            }
-            
-            if(enemyHasBeenHit){
-               if(enemyRespawnDelayer == 30)
-               {
-                   enemy.setLocation(X, Y);
-                   enemyRespawnDelayer = 0;
-                   enemyHasBeenHit = false;
-               }else{
-                   enemyRespawnDelayer++;
-                }               
-            }
 
-            if(floorsCounter == 4)
-            {
-                addObject(clue, 1000, 400);
+                addObject(enemyBoss, 850, 100);
 
-                if(player.clueIsTouched())
-                    missionComplete();
-            }
+                //--------------------------------------------------------------------------------------------------
+                //--------------------------------------------------------------------------------------------------
+                if(enemyBoss.checkImpact())
+                {
+                    enemyBossHasBeenHit = true;
+        
+                    if(scoreDelayer > 25)
+                    {
+                        scoreCounter.addScore(1);
+                        scoreDelayer = 0;           
+                    }else
+                        scoreDelayer++;                   
+                }
+                
+                if(enemyBossHasBeenHit){
+                    enemyBossHasBeenHit = false;
+                    if(enemyBoss.health == 0)
+                    {
+                        removeObject(enemyBoss);
+                    }
+                }
+                //--------------------------------------------------------------------------------------------------
+                //--------------------------------------------------------------------------------------------------
         }else
          {
             stop();
@@ -128,18 +103,7 @@ public class FinalWorld extends GameWorld
         Greenfoot.delay(40);
         Greenfoot.setWorld(new FinalScreen(score));        
     }
-    
-    public boolean changeBackground()
-    {
-       if(background1.getX() == -550) 
-           background1.setImage("Background3C.png");    
-           
-       if(background2.getX() == -550) 
-           background2.setImage("Background3D.png");    
-       
-       return true;
-    }
-        
+
     public void play()
     {
         soundtrack.play();

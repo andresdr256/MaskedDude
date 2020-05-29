@@ -10,5 +10,14 @@ public class ScoreScreen extends World
         ScoreCounter scoreCounter = new ScoreCounter(score);
         addObject(scoreCounter, 150, 200);
         addObject(mainMenuButton, 900, 400);
+        prepare();
+    }
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
     }
 }
