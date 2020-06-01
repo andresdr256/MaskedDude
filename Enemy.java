@@ -68,7 +68,7 @@ public class Enemy extends Actor
     
     public void shoot()
     {
-        if(shotDelayer == 100){
+        if(shotDelayer == 60){
             Bullet bullet = new Bullet(-10);
             getWorld().addObject(bullet,getX()-80,getY()-30);
             shotDelayer = 0;                

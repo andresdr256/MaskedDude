@@ -22,7 +22,8 @@ public class FirstWorld extends GameWorld
     Enemy enemy = new Enemy();
     Player player = new Player();
     Clue clue = new Clue();
-    
+    Timer timer = new Timer();
+
     public FirstWorld(int difficulty)
     {    
         this.difficulty = difficulty;
@@ -40,10 +41,11 @@ public class FirstWorld extends GameWorld
 
         addObject(healthbar, 200, 40);        
         addObject(scoreCounter, 950, 35);
+        addObject(timer, 850, 35);
         
         addObject(player, 100, 200);
 
-        addObject(enemy, player.getX()+1200, 50);              
+        addObject(enemy, player.getX()+1200, 50);   
     }
      
     public void act()
@@ -93,7 +95,7 @@ public class FirstWorld extends GameWorld
                 }
             }
             
-            if(plataformsCounter == 2)
+            if(plataformsCounter == 5)
             {
                 addObject(clue, 1000, 150);
                 if(player.clueIsTouched())

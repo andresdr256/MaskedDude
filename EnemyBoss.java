@@ -8,7 +8,7 @@ public class EnemyBoss extends Actor
     private int shotDelayer = 0;
     private int speed;    
     private int i = 0;
-    private int health = 100;
+    private int health = 300;
     
     public EnemyBoss()
     {
@@ -21,6 +21,7 @@ public class EnemyBoss extends Actor
         fall();
         shoot();
         animation();
+        checkImpact();
     }
         
     public void scroll() 
@@ -69,9 +70,9 @@ public class EnemyBoss extends Actor
     
     public void shoot()
     {
-        if(shotDelayer == 75){
+        if(shotDelayer == 30){
             Bullet bullet = new Bullet(-15);
-            getWorld().addObject(bullet,getX()-120,getY()-50);
+            getWorld().addObject(bullet,getX()-120,getY()-45);
             shotDelayer = 0;                
         }else
         {
@@ -111,5 +112,10 @@ public class EnemyBoss extends Actor
                     i++;
             }
         }    
+    }
+    
+    public int getHealth()
+    {
+        return health;
     }
 }

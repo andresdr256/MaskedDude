@@ -3,17 +3,21 @@ import java.lang.Class;
 
 public class Player extends Actor
 {
+    private GreenfootSound reloadSound = new GreenfootSound("ReloadSound.mp3");
+
     boolean hitByBullet = false;
 
     private final int GRAVITY = 1;
     private boolean playerIsDown = false;
-    private int leftSpriteCounter = 0; 
     private int rightSpriteCounter = 0;
+    private int leftSpriteCounter = 0; 
     private int loseHealthDelayer = 0;
+    private int reloadDelayer = 0;
     private int walkDelayer = 0;
     private int shotDelayer = 8;
-    private int speed;
+    private int bullets = 5;
     private int difficulty;
+    private int speed;
     
     public Player(){        
         setImage("sprites/PlayerRight0.png");        
@@ -98,6 +102,15 @@ public class Player extends Actor
         
         if(!Greenfoot.isKeyDown("DOWN"))
             playerIsDown = false;
+        
+        if(bullets<= 0 && reloadDelayer>180)
+        {
+            bullets = 5;
+            reloadDelayer=0;
+        }else if(bullets <= 0) 
+         {
+            reloadDelayer++;
+         }
             
         //Shoot action
         if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround() && !playerIsDown)
@@ -108,7 +121,14 @@ public class Player extends Actor
             
             if(shotDelayer == 8)
             {
-                shoot();
+                if(bullets>0)
+                {
+                    shoot();
+                    bullets--;
+                
+                }else
+                  reloadSound.play();
+
                 shotDelayer = 0;
             }    
             else 

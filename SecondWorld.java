@@ -21,6 +21,7 @@ public class SecondWorld extends GameWorld
     Enemy enemy = new Enemy();
     Player player = new Player();
     Clue clue = new Clue();
+    Timer timer = new Timer();
 
     public SecondWorld(int difficulty, int score)
     {
@@ -44,6 +45,7 @@ public class SecondWorld extends GameWorld
         addObject(player, 100, 400);
         
         addObject(enemy, player.getX()+1200, 50);
+        addObject(timer, 850, 35);
 
     }
     
@@ -97,7 +99,7 @@ public class SecondWorld extends GameWorld
                 }               
             }
             
-            if(floorsCounter == 3)
+            if(floorsCounter == 5)
             {
                 addObject(clue, 1050, 400);
                 GreenfootImage tempImage = clue.getImage();

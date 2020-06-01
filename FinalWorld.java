@@ -25,6 +25,7 @@ public class FinalWorld extends GameWorld
     Player player = new Player();
     Clue clue = new Clue();
     EnemyBoss enemyBoss = new EnemyBoss();
+    Timer timer = new Timer();
 
     public FinalWorld(int difficulty, int score)
     {    
@@ -50,6 +51,7 @@ public class FinalWorld extends GameWorld
         addObject(player, 100, 400);
 
         addObject(enemy, player.getX()+1200, 50);
+        addObject(timer, 850, 35);
     }
 
     public void act()
@@ -69,7 +71,7 @@ public class FinalWorld extends GameWorld
         if(player.isOver() == false)
        {
             X = player.getX()+600+Greenfoot.getRandomNumber(200);
-            Y = 50;
+            Y = 250;
             
             if(background1.scroll())
                 floorsCounter++;            
@@ -105,7 +107,7 @@ public class FinalWorld extends GameWorld
                 }               
             }
 
-            if(floorsCounter == 4)
+            if(floorsCounter == 5)
             {
                 addObject(clue, 1000, 400);
 
@@ -126,7 +128,7 @@ public class FinalWorld extends GameWorld
 
         soundtrack.stop();
         Greenfoot.delay(40);
-        Greenfoot.setWorld(new FinalScreen(score));        
+        Greenfoot.setWorld(new BossFight(3, score));        
     }
     
     public boolean changeBackground()
