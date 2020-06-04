@@ -12,4 +12,4 @@ MaskedDude está diseñado para jugadores de todas las edades, amantes de la acc
 El usuario solo necesita un ordenador con teclado para jugar.
 
 ## Diagrama de clases 
-![Diagrama de clases](diagramaDeClases.png)
+![Diagrama de clases](diagramaDeClases.jpg)
