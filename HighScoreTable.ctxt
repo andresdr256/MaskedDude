@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=HighScoreTable
+comment1.params=
+comment1.target=HighScoreTable()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ readFileAndSplit()
+comment4.params=
+comment4.target=void\ sortScores()
+comment5.params=j1\ j2
+comment5.target=int\ compare(Jugador,\ Jugador)
+numComments=6

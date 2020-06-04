@@ -24,8 +24,9 @@ public class Menu extends World
     
     private void prepare()
     {
-        addObject(new StartButton(difficulty), 200,295);
-        addObject(new OptionsButton(difficulty), 193,370);
-        addObject(new ExitButton(), 190,440);   
+        addObject(new StartButton(difficulty), 200,270);
+        addObject(new HighScoresButton(), 200, 330);
+        addObject(new OptionsButton(difficulty), 193,390);
+        addObject(new ExitButton(), 190,450);   
     }
 }

@@ -1,4 +1,4 @@
-import greenfoot.*;  
+import greenfoot.*;
 
 public class ScoreCounter extends Actor
 {

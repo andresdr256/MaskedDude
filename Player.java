@@ -113,11 +113,11 @@ public class Player extends Actor
          }
             
         //Shoot action
-        if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround() && !playerIsDown)
+        if (Greenfoot.isKeyDown("SPACE") && isOnSolidGround())
         {
             // Cambia al sprite de disparo
-            if ( !Greenfoot.isKeyDown("RIGHT"))
-                setImage("sprites/ShotRight0.png");
+            //if ( !Greenfoot.isKeyDown("RIGHT"))
+              //  setImage("sprites/ShotRight0.png");
             
             if(shotDelayer == 8)
             {
@@ -140,7 +140,7 @@ public class Player extends Actor
     public void shoot()
     {
         Bullet bullet = new Bullet(15);
-        getWorld().addObject(bullet,getX()+80,getY()-25);
+        getWorld().addObject(bullet,getX()+80,getY()-(playerIsDown?1:25));
     }
     
     // Movimiento de caida 
